@@ -35,9 +35,18 @@
                       <li>
                           <a href="/users/">Users</a>
                       </li>
-                      <li>
-                          <a href="#">Logout</a>
-                      </li>
+                      <% if user_signed_in? %>
+                        <li>
+                          <%= link_to 'Logout  ' + current_user.email , destroy_user_session_path, :method => :delete %>
+                        </li>  
+                      <% else %>
+                        <li>  
+                          <%= link_to 'Log in', new_user_session_path %>
+                        </li>
+                        <li>  
+                          <%= link_to 'Register', new_user_registration_path %>
+                        </li>  
+                      <% end %>
                   </ul>
               </div>
               <!-- /.navbar-collapse -->
@@ -47,7 +56,17 @@
 
       <!-- Page Content -->
       <div class="container">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+            <!-- <div class="alert alert-warning" role="alert">
+              <a href="#" class="alert-link">...</a>
+            </div>
+            <div class="alert alert-danger" role="alert">
+              <a href="#" class="alert-link">...</a>
+            </div -->
+
             
+
             <%= yield %>        
 
           <!-- Footer -->
