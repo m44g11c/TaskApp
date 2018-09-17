@@ -1,0 +1,36 @@
+          <hr>
+
+          <!-- Title -->
+          <div class="row">
+              <div class="col-lg-12">
+                  <h3>Projects</h3>
+              </div>
+          </div>
+          <!-- /.row -->
+
+          <!-- Page Features -->
+          <div class="row text-center">              
+
+            <% @projects.each do |project| %>
+                  
+              <div class="col-md-3 col-sm-6 feature">
+                  <div class="thumbnail">
+                      <div class="caption">
+                          <h3><%=project.name%></h3>
+                          <p>Summary<%=project.summary%></p>
+                          <p>Start date<%=project.start_date%></p>
+                          <p>End date<%=project.end_date%></p>
+                          <p>
+                           <%= link_to "View", project_path(project), :class=>"btn btn-default" %>   
+                           <%= link_to 'Destroy',  { action: :destroy, id: project.id }, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-primary" %>   
+                          </p>
+                      </div>
+                  </div>
+              </div>
+            
+            <% end %>
+              
+          </div>
+          <!-- /.row -->
+          <%= link_to 'New Project', "/projects/new", :class=>"btn btn-primary" %>
+          <hr>

@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="container">
+    
+    <h1>Create Task</h1>
+  </div>
+</div>
+
+<div class="task">
+  <div class="container">
+
+    <%= form_for(@task) do |f| %>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <%= f.text_field :title, :class => "form-control" %>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <%= f.text_field :description, :class => "form-control" %>
+      </div>
+      <div class="form-group"> 
+        <label for="status">Status:</label> 
+        <%= f.select :status, [["New", "New"], ["In Progress", "In Progress"], ["Done", "Done"]], {}, {class: "form-control"} %>
+      </div>
+      <%= f.hidden_field :project_id, :value => params[:id] %>
+      
+      <%= f.submit "Create", :class => "btn btn-default" %>
+    <% end %> 
+    
+  </div>
+</div> 

@@ -1,0 +1,19 @@
+<div class="header">
+  <div class="container">
+    <h1>Create Project</h1>
+  </div>
+</div>
+
+<div class="create">
+  <div class="container ">
+    
+    <%= form_for @project do |f| %>  
+      <div class="form-group">
+        <%= f.label :name %><br> 
+        <%= f.text_field :name, :class => ['form-control'] %>
+      </div>  
+      <%= f.submit "Create", :class=>"btn btn-default" %> 
+    <% end %>
+    
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="header">
+  <div class="container">
+    <h1>Project Info</h1>
+  </div>
+</div>
+
+<div class="project">
+  <div class="container">
+    <%= link_to 'New Task', "/projects/#{@project.id}/new", :class=>"btn btn-primary" %>
+    <h2><%= @project.name %> Tasks:</h2>
+
+      <% @tasks.each do |t| %>
+
+      <div class="row">
+        <div class="col-sm-6 col-md-12">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3><%=  t.title %></h3>
+              <p><%=  t.description %></p>
+              <p><%= t.status %></p>
+              <p>
+                <a href="<%=task_path(t)%>" class="btn btn-default" role="button">View</a>
+                <%= link_to "Delete", task_path(t),  method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-primary" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% end %>
+    
+  </div>
+</div>
