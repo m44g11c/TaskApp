@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   post '/tasks' => 'tasks#create'
   delete '/tasks/:id' => 'tasks#destroy'
 
-  get '/users' => 'users#index'
+  resources :users
+  # get '/users' => 'users#index'
+  # get '/users/:id/edit' => 'users#edit', as: :edit_user
+  # patch '/users/:id' => 'users#update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
