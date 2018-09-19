@@ -24,6 +24,9 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
       if @task.update(task_params)
+        if params['user']['id'] != ''
+          @task.users << User.find(params['user']['id'])
+        end
         redirect_to "/projects/#{@task.project.id}"
       else
         render 'edit'
@@ -33,6 +36,12 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
+    redirect_back fallback_location: @post
+  end
+
+  def destroy_u
+    @user = User.find(params[:id])
+    @user.destroy
     redirect_back fallback_location: @post
   end
   
