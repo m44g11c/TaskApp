@@ -6,7 +6,7 @@
 
 <div class="task">
   <div class="container">
-
+    
     <%= form_for(@task) do |f| %>
       <div class="form-group">
         <label for="email">Title:</label>
@@ -20,10 +20,10 @@
         <label for="status">Status:</label> 
         <%= f.select :status, [["New", "New"], ["In Progress", "In Progress"], ["Done", "Done"]], {}, {class: "form-control"} %>
       </div>
-
+      
       <%= f.submit "Update", :class => "btn btn-default" %>
     <% end %> 
-    
+
   </div>
 </div> 
 

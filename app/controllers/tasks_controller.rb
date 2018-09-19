@@ -18,13 +18,13 @@ class TasksController < ApplicationController
   end
 
   def edit 
-    @task = Task.find(params[:id]) 
+    @task = Task.find(params[:id])
   end
   
   def update
     @task = Task.find(params[:id])
       if @task.update(task_params)
-        redirect_to "/projects/#{task_params['project_id']}"
+        redirect_to "/projects/#{@task.project.id}"
       else
         render 'edit'
       end
@@ -38,6 +38,6 @@ class TasksController < ApplicationController
   
   private 
   def task_params 
-    params.require(:task).permit(:title, :description, :status, :project_id) 
+    params.require(:task).permit(:title, :description, :status, :project_id, :id) 
   end
 end
